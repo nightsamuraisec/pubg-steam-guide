@@ -1,0 +1,39 @@
+name: Update README screenshots
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    if: ${{ github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, '[skip ci]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install Playwright
+        run: |
+          npm install playwright --no-save
+          npx playwright install chromium --with-deps
+
+      - name: Capture screenshots
+        run: |
+          npx --yes serve . -l 3456 &
+          sleep 5
+          node tools/capture-screenshots.mjs
+        env:
+          BASE_URL: http://127.0.0.1:3456
+
+      - name: Commit updated screenshots
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update README screenshots [skip ci]"
+          file_pattern: screenshots/*.png

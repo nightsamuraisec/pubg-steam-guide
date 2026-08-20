@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>PUBG Steam Guide</title>
+    <meta
+      name="description"
+      content="PUBG Steam: çanta planlayıcı, gizli bodrum haritaları, araç ve benzin rehberi."
+    />
+    <meta name="theme-color" content="#131816" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/ui-refresh.css" />
+  </head>
+  <body>
+    <div class="page-bg" aria-hidden="true"></div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <main class="wrap">
+      <div class="app-chrome">
+      <header class="topbar">
+        <div class="brand">
+          <img class="brand-mark" src="images/ui/level-3-backpack.png" alt="" width="64" height="64" />
+          <div class="brand-copy">
+            <p class="brand-kicker" id="subtitle">Steam envanter &amp; harita planı</p>
+            <h1 id="title">PUBG Steam</h1>
+          </div>
+        </div>
+        <div class="topbar-tools">
+          <div class="lang-switch" role="group" aria-label="Language">
+            <button type="button" data-lang="tr" class="active">TR</button>
+            <button type="button" data-lang="en">EN</button>
+          </div>
+        </div>
+      </header>
+
+      <nav class="top-nav" aria-label="Main sections">
+        <button type="button" class="nav-btn active" data-view="bag" id="navBag">
+          <span class="nav-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M7 8V6a5 5 0 0 1 10 0v2" />
+              <rect x="4" y="8" width="16" height="12" rx="2" />
+              <path d="M9 13h6" />
+            </svg>
+          </span>
+          <span class="nav-label" id="navBagLabel">Çanta</span>
+        </button>
+        <button type="button" class="nav-btn" data-view="maps" id="navMaps">
+          <span class="nav-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z" />
+              <path d="M9 4v14M15 6v14" />
+            </svg>
+          </span>
+          <span class="nav-label" id="navMapsLabel">Harita</span>
+        </button>
+        <button type="button" class="nav-btn" data-view="original" id="navOriginal">
+          <span class="nav-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="12" cy="12" r="8" />
+              <path d="M12 8v8M8 12h8" />
+              <path d="M5 19l3-3M19 5l-3 3" />
+            </svg>
+          </span>
+          <span class="nav-label" id="navOriginalLabel">Orijinal</span>
+        </button>
+        <button type="button" class="nav-btn" data-view="vehicles" id="navVehicles">
+          <span class="nav-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M4 15h16l-1.5-5.5A2 2 0 0 0 16.6 8H7.4a2 2 0 0 0-1.9 1.5L4 15z" />
+              <path d="M6.5 15v2M17.5 15v2" />
+              <circle cx="7.5" cy="15" r="1.6" />
+              <circle cx="16.5" cy="15" r="1.6" />
+              <path d="M8 8l1.2-2.2h5.6L16 8" />
+            </svg>
+          </span>
+          <span class="nav-label" id="navVehiclesLabel">Araçlar</span>
+        </button>
+        <button type="button" class="nav-btn" data-view="drops" id="navDrops">
+          <span class="nav-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M12 3v6" />
+              <path d="M9 6h6" />
+              <path d="M4 11h16l-1.2 9H5.2L4 11z" />
+              <path d="M8 11c1.2 2 2.8 3 4 3s2.8-1 4-3" />
+            </svg>
+          </span>
+          <span class="nav-label" id="navDropsLabel">Drop</span>
+        </button>
+        <button type="button" class="nav-btn" data-view="tips" id="navTips">
+          <span class="nav-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="12" cy="12" r="8" />
+              <path d="M12 11v5" />
+              <circle cx="12" cy="8" r="0.9" fill="currentColor" stroke="none" />
+            </svg>
+          </span>
+          <span class="nav-label" id="navTipsLabel">Bilgi</span>
+        </button>
+        <button type="button" class="nav-btn" data-view="rank" id="navRank">
+          <span class="nav-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z" />
+            </svg>
+          </span>
+          <span class="nav-label" id="navRankLabel">Kademe Level</span>
+        </button>
+        <button type="button" class="nav-btn" data-view="ranked" id="navRanked">
+          <span class="nav-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M12 2l2.5 5 5.5.8-4 3.9 1 5.5-5-2.6-5 2.6 1-5.5-4-3.9 5.5-.8z" />
+              <path d="M12 17v5M8 22h8" />
+            </svg>
+          </span>
+          <span class="nav-label" id="navRankedLabel">Dereceli</span>
+        </button>
+      </nav>
+      </div>
+
+      <div id="view-bag" class="app-view active" data-view-panel="bag">
+        <section class="panel squad-panel">
+          <div class="section-head squad-head">
+            <div>
+              <h2 id="squadTitle">Squad çantaları</h2>
+              <p id="squadHint" class="hint"></p>
+            </div>
+          </div>
+          <div id="profileBar" class="profile-bar" role="tablist" aria-label="Profiles"></div>
+          <div class="share-bar">
+            <button type="button" id="shareLinkBtn" class="share-btn primary">Link kopyala</button>
+            <button type="button" id="shareCodeBtn" class="share-btn">Kod kopyala</button>
+            <button type="button" id="importBagBtn" class="share-btn">İçe aktar</button>
+          </div>
+          <div id="importPanel" class="import-panel hidden">
+            <label class="filter-label" for="importInput" id="importLabel">Link veya kod yapıştır</label>
+            <textarea id="importInput" rows="3" spellcheck="false" placeholder="bag=... veya paylaşım kodu"></textarea>
+            <div class="import-actions">
+              <button type="button" id="importConfirmBtn" class="share-btn primary">Yükle</button>
+              <button type="button" id="importCancelBtn" class="share-btn">İptal</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel setup-panel">
+          <div class="levels" aria-label="Backpack level">
+            <button type="button" class="level-btn" data-level="1">
+              <img class="level-icon" src="images/ui/level-1.png" alt="" width="44" height="44" />
+              <span class="lvl-label">Sv 1</span>
+            </button>
+            <button type="button" class="level-btn" data-level="2">
+              <img class="level-icon" src="images/ui/level-2.png" alt="" width="44" height="44" />
+              <span class="lvl-label">Sv 2</span>
+            </button>
+            <button type="button" class="level-btn active" data-level="3">
+              <img class="level-icon" src="images/ui/level-3.png" alt="" width="44" height="44" />
+              <span class="lvl-label">Sv 3</span>
+            </button>
+          </div>
+
+          <div class="vest-row">
+            <button type="button" id="vestBtn" class="vest-btn" aria-pressed="false">
+              Yelek Tak (+50)
+            </button>
+          </div>
+
+          <div class="capacity">
+            <div class="capacity-meta">
+              <strong id="weightText">0.0 / 320 toplam ağırlık</strong>
+            </div>
+            <div class="bar" aria-hidden="true">
+              <div id="barFill" class="bar-fill"></div>
+            </div>
+            <p id="capacityBreakdown" class="breakdown">
+              Temel: 70 · Çanta: 250 · Yelek: 0
+            </p>
+            <div id="ammoAdvise" class="ammo-advise" hidden></div>
+          </div>
+        </section>
+
+        <section class="panel bag-panel">
+          <div class="section-head">
+            <h2 id="inventoryTitle">Envanter</h2>
+            <button type="button" id="clearBtn" class="clear-btn">Çantayı boşalt</button>
+          </div>
+          <div id="inventoryGrid" class="inventory-area"></div>
+        </section>
+
+        <section class="panel catalog-panel">
+          <div class="section-head">
+            <div>
+              <h2 id="catalogTitle">Eşya ekle</h2>
+              <p id="catalogHint" class="hint"></p>
+            </div>
+          </div>
+          <div id="tabs" class="tabs"></div>
+          <div id="attachFilter" class="attach-filter hidden"></div>
+          <section class="tool-room compare-room" id="weaponCompareRoom" hidden aria-labelledby="weaponCompareTitle">
+            <div class="tool-room-head">
+              <h3 id="weaponCompareTitle">Silah karşılaştır</h3>
+              <p class="hint" id="weaponCompareHint">İki silah seç — hasar, menzil, eklenti.</p>
+            </div>
+            <div id="weaponCompareArea" class="weapon-compare-area"></div>
+          </section>
+          <div id="catalogGrid" class="catalog-area"></div>
+        </section>
+      </div>
+
+      <div id="view-maps" class="app-view" data-view-panel="maps" hidden>
+        <section class="panel maps-panel">
+          <div class="section-head">
+            <div>
+              <h2 id="mapsTitle">Gizli Bodrum</h2>
+              <p id="mapsHint" class="hint"></p>
+            </div>
+          </div>
+          <div id="mapsArea" class="maps-area"></div>
+        </section>
+      </div>
+
+      <div id="view-original" class="app-view" data-view-panel="original" hidden>
+        <section class="panel maps-panel original-panel">
+          <div class="section-head">
+            <div>
+              <h2 id="originalTitle">Orijinal haritalar</h2>
+              <p id="originalHint" class="hint"></p>
+            </div>
+          </div>
+          <div id="originalArea" class="maps-area original-area"></div>
+        </section>
+      </div>
+
+      <div id="view-vehicles" class="app-view" data-view-panel="vehicles" hidden>
+        <section class="panel vehicles-panel">
+          <div class="section-head">
+            <div>
+              <h2 id="vehiclesTitle">Araçlar & benzin</h2>
+              <p id="vehiclesHint" class="hint"></p>
+            </div>
+          </div>
+          <div id="vehiclesFuelNote" class="vehicles-fuel-note"></div>
+          <section class="tool-room fuel-calc-room" id="fuelCalcRoom" aria-labelledby="fuelCalcTitle">
+            <div class="tool-room-head">
+              <h3 id="fuelCalcTitle">Bidon hesabı</h3>
+              <p class="hint" id="fuelCalcHint">Rotate mesafesine göre kaç bidon gerekir.</p>
+            </div>
+            <div id="fuelCalcArea" class="fuel-calc-area"></div>
+          </section>
+          <div id="vehiclesArea" class="vehicles-area"></div>
+        </section>
+      </div>
+
+      <div id="view-drops" class="app-view" data-view-panel="drops" hidden>
+        <section class="panel drops-panel">
+          <div class="section-head">
+            <div>
+              <h2 id="dropsTitle">Drop & kasa loot</h2>
+              <p id="dropsHint" class="hint"></p>
+            </div>
+          </div>
+          <p id="dropsIntro" class="drops-intro hint"></p>
+          <div id="dropsArea" class="drops-area"></div>
+        </section>
+      </div>
+
+      <div id="view-tips" class="app-view" data-view-panel="tips" hidden>
+        <section class="panel drops-panel tips-panel">
+          <div class="section-head">
+            <div>
+              <h2 id="tipsTitle">Bilgi & mess</h2>
+              <p id="tipsHint" class="hint"></p>
+            </div>
+          </div>
+          <p id="tipsIntro" class="drops-intro hint"></p>
+          <div id="tipsArea" class="drops-area tips-area"></div>
+        </section>
+      </div>
+
+      <div id="view-rank" class="app-view" data-view-panel="rank" hidden>
+        <section class="panel rank-panel">
+          <div class="section-head">
+            <div>
+              <h2 id="rankTitle">Seviye &amp; Kademe Rehberi</h2>
+              <p id="rankHint" class="hint">PUBG Steam Hayatta Kalma Ustalığı (Survival Mastery) 5 Kademe sistemi — her 500 seviyede 1 Kademe (1. Kademe ➔ 5. Kademe) atlama rehberi ve görsel rozet hesaplayıcısı.</p>
+            </div>
+          </div>
+          <div id="mainRankArea" class="rank-area"></div>
+        </section>
+      </div>
+
+      <div id="view-ranked" class="app-view" data-view-panel="ranked" hidden>
+        <section class="panel ranked-panel">
+          <div class="section-head">
+            <div>
+              <h2 id="rankedTitle">Dereceli Sezon (Ranked) Rütbeleri</h2>
+              <p id="rankedHint" class="hint">PUBG Steam Dereceli Mod (Ranked Matchmaking) RP Rütbe Sistemi — Bronz'dan Hayatta Kalan'a kadar tüm rütbeler, RP aralıkları, sezon ödülleri ve RP hesaplayıcısı.</p>
+            </div>
+          </div>
+          <div id="mainRankedArea" class="ranked-area"></div>
+        </section>
+      </div>
+
+      <p class="footer-note">
+        PUBG Steam · Çanta · Harita · Orijinal · Araçlar · Drop · Bilgi · Kademe Level · Dereceli ·
+        <a href="https://nightsamuraisec.github.io/pubg-scout/" target="_blank" rel="noopener">Scout</a>
+      </p>
+      <p class="footer-credit">
+        Yapımcı:
+        <a href="https://github.com/nightsamuraisec" target="_blank" rel="noopener">nightsamuraisec</a>
+      </p>
+    </main>
+
+    <script src="js/items.js"></script>
+    <script src="js/compatibility.js"></script>
+    <script src="js/weapons-guide.js"></script>
+    <script src="js/gear-details.js"></script>
+    <script src="js/vehicles-guide.js"></script>
+    <script src="js/drops-guide.js"></script>
+    <script src="js/tips-guide.js"></script>
+    <script src="js/maps.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
